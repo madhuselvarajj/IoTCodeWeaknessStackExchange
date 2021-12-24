@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.4.1"/>
+    <errors>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TestSuite&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TestSuite&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-1027458.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TestSuite&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TestSuite&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-1027460.cpp" line="3"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;MPL3115A2&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;MPL3115A2&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-13493939.cpp" line="6"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;MyData&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;MyData&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-15522215.cpp" line="1"/>
+        </error>
+        <error id="publicAllocationError" severity="warning" msg="Possible leak in public function. The pointer &amp;#039;dataPtr&amp;#039; is not deallocated before it is allocated." verbose="Possible leak in public function. The pointer &amp;#039;dataPtr&amp;#039; is not deallocated before it is allocated." cwe="398">
+            <location file="post-15522215.cpp" line="3"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;percentage&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;percentage&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-15524630.cpp" line="1"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;liquid&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;liquid&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-15524630.cpp" line="2"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;FunctionClass&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;FunctionClass&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-15599741.cpp" line="7"/>
+        </error>
+        <error id="CastIntegerToAddressAtReturn" severity="portability" msg="Returning an integer in a function with pointer return type is not portable." verbose="Returning an integer (int/long/etc) in a function with pointer return type is not portable across different platforms and compilers. For example in 32-bit Windows and Linux they are same width, but in 64-bit Windows and Linux they are of different width. In worst case you end up casting 64-bit integer down to 32-bit pointer. The safe way is to always return a pointer." cwe="758">
+            <location file="post-17394825-3.cpp" line="20"/>
+        </error>
+        <error id="arrayIndexThenCheck" severity="style" msg="Array index &amp;#039;index&amp;#039; is used before limits check." verbose="Defensive programming: The variable &amp;#039;index&amp;#039; is used as an array index before it is checked that is within limits. This can mean that the array might be accessed out of bounds. Reorder conditions such as &amp;#039;(a[i] &amp;amp;&amp;amp; i &amp;lt; 10)&amp;#039; to &amp;#039;(i &amp;lt; 10 &amp;amp;&amp;amp; a[i])&amp;#039;. That way the array will not be accessed if the index is out of limits." cwe="398">
+            <location file="post-17552715.cpp" line="13"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;ch&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;ch&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-18175521.cpp" line="18" info="Shadow variable"/>
+            <location file="post-18175521.cpp" line="16" info="Shadowed declaration"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;LinkedListItem &amp;lt; string &amp;gt;::_previous&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;LinkedListItem &amp;lt; string &amp;gt;::_previous&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-18415021.cpp" line="23"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;LinkedListItem &amp;lt; string &amp;gt;::_next&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;LinkedListItem &amp;lt; string &amp;gt;::_next&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-18415021.cpp" line="23"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;_value&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;_value&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-18415021.cpp" line="24"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;LinkedListItem &amp;lt; string &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;LinkedListItem &amp;lt; string &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-18415021.cpp" line="9"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;value&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;value&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-18415021.cpp" line="23"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Foo&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Foo&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-19195767.cpp" line="1"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." verbose="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." cwe="788">
+            <location file="post-19889148-2.cpp" line="18"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." verbose="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." cwe="788">
+            <location file="post-19889148-2.cpp" line="27"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." verbose="Array &amp;#039;codes[11][4]&amp;#039; accessed at index codes[0][10], which is out of bounds." cwe="788">
+            <location file="post-19889148-2.cpp" line="37"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;receivedbyte&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;receivedbyte&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-19894433-2.cpp" line="2"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;state&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;state&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-19894433.cpp" line="2"/>
+        </error>
+        <error id="constParameter" severity="style" msg="Parameter &amp;#039;buffer&amp;#039; can be declared with const" verbose="Parameter &amp;#039;buffer&amp;#039; can be declared with const" cwe="398">
+            <location file="post-20434191.cpp" line="6"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;response&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;response&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-20928942.cpp" line="24" info="Shadow variable"/>
+            <location file="post-20928942.cpp" line="21" info="Shadowed declaration"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;beat[18]&amp;#039; accessed at index 71, which is out of bounds." verbose="Array &amp;#039;beat[18]&amp;#039; accessed at index 71, which is out of bounds." cwe="788">
+            <location file="post-21035211.cpp" line="36"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;notes[21]&amp;#039; accessed at index 71, which is out of bounds." verbose="Array &amp;#039;notes[21]&amp;#039; accessed at index 71, which is out of bounds." cwe="788">
+            <location file="post-21035211.cpp" line="37"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;names[8]&amp;#039; accessed at index 20, which is out of bounds." verbose="Array &amp;#039;names[8]&amp;#039; accessed at index 20, which is out of bounds." cwe="788">
+            <location file="post-21035211.cpp" line="60"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;duration&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;duration&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-21035211.cpp" line="33"/>
+        </error>
+        <error id="nullPointer" severity="error" msg="Null pointer dereference" verbose="Null pointer dereference" cwe="476">
+            <location file="post-21199851.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Relay&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Relay&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-21464832.cpp" line="4"/>
+        </error>
+        <error id="assertWithSideEffect" severity="warning" msg="Assert statement calls a function which may have desired side effects: &amp;#039;pin&amp;#039;." verbose="Non-pure function: &amp;#039;pin&amp;#039; is called inside assert statement. Assert statements are removed from release builds so the code inside assert statement is not executed. If the code is needed also in release builds, this is a bug." cwe="398">
+            <location file="post-21467525-2.cpp" line="36"/>
+        </error>
+        <error id="assertWithSideEffect" severity="warning" msg="Assert statement calls a function which may have desired side effects: &amp;#039;binding&amp;#039;." verbose="Non-pure function: &amp;#039;binding&amp;#039; is called inside assert statement. Assert statements are removed from release builds so the code inside assert statement is not executed. If the code is needed also in release builds, this is a bug." cwe="398">
+            <location file="post-21467525-2.cpp" line="37"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Relay&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Relay&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-21467525.cpp" line="4"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;pins&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;pins&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-21467525.cpp" line="4"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;arg&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;arg&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-21505275.cpp" line="31" info="Shadow variable"/>
+            <location file="post-21505275.cpp" line="23" info="Shadowed declaration"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::transform algorithm instead of a raw loop." verbose="Consider using std::transform algorithm instead of a raw loop." cwe="398">
+            <location file="post-21505275.cpp" line="32"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;output_control&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;output_control&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-21506507.cpp" line="1"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;i&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;i&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-21607031.cpp" line="3"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;count&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;count&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-21607031.cpp" line="4"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;tmp&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;tmp&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-21607031.cpp" line="5"/>
+        </error>
+        <error id="selfAssignment" severity="warning" msg="Redundant assignment of &amp;#039;redpin&amp;#039; to itself." verbose="Redundant assignment of &amp;#039;redpin&amp;#039; to itself." cwe="398">
+            <location file="post-21657278.cpp" line="7"/>
+        </error>
+        <error id="selfAssignment" severity="warning" msg="Redundant assignment of &amp;#039;greenpin&amp;#039; to itself." verbose="Redundant assignment of &amp;#039;greenpin&amp;#039; to itself." cwe="398">
+            <location file="post-21657278.cpp" line="8"/>
+        </error>
+        <error id="selfAssignment" severity="warning" msg="Redundant assignment of &amp;#039;bluepin&amp;#039; to itself." verbose="Redundant assignment of &amp;#039;bluepin&amp;#039; to itself." cwe="398">
+            <location file="post-21657278.cpp" line="9"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;y&amp;#039; is always true" verbose="Condition &amp;#039;y&amp;#039; is always true" cwe="571">
+            <location file="post-21919499.cpp" line="18" info="Condition &amp;#039;y&amp;#039; is always true"/>
+            <location file="post-21919499.cpp" line="7" info="Assignment &amp;#039;y=1&amp;#039;, assigned value is 1"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Test&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Test&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-22135948.cpp" line="1"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Test&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Test&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-22138528.cpp" line="1"/>
+        </error>
+        <error id="returnDanglingLifetime" severity="error" msg="Returning pointer to local variable &amp;#039;tempValue&amp;#039; that will be invalid when returning." verbose="Returning pointer to local variable &amp;#039;tempValue&amp;#039; that will be invalid when returning." cwe="562">
+            <location file="post-23194097.cpp" line="5" info=""/>
+            <location file="post-23194097.cpp" line="3" info="Variable created here."/>
+            <location file="post-23194097.cpp" line="4" info="Address of variable taken here."/>
+        </error>
+        <error id="invalidPointerCast" severity="portability" msg="Casting from float * to unsigned long * is not portable due to different binary data representations on different platforms." verbose="Casting from float * to unsigned long * is not portable due to different binary data representations on different platforms." cwe="704">
+            <location file="post-23242578.cpp" line="3"/>
+        </error>
+        <error id="invalidPointerCast" severity="portability" msg="Casting between unsigned long * and float * which have an incompatible binary data representation." verbose="Casting between unsigned long * and float * which have an incompatible binary data representation." cwe="704">
+            <location file="post-23242578.cpp" line="26"/>
+        </error>
+        <error id="clarifyCondition" severity="style" msg="Boolean result is used in bitwise operation. Clarify expression with parentheses." verbose="Suspicious expression. Boolean result is used in bitwise operation. The operator &amp;#039;!&amp;#039; and the comparison operators have higher precedence than bitwise operators. It is recommended that the expression is clarified with parentheses." cwe="398">
+            <location file="post-23531356-2.cpp" line="2"/>
+        </error>
+        <error id="clarifyCondition" severity="style" msg="Boolean result is used in bitwise operation. Clarify expression with parentheses." verbose="Suspicious expression. Boolean result is used in bitwise operation. The operator &amp;#039;!&amp;#039; and the comparison operators have higher precedence than bitwise operators. It is recommended that the expression is clarified with parentheses." cwe="398">
+            <location file="post-23531356-2.cpp" line="5"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;c&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;c&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-23571875.cpp" line="2"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;p&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;p&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-23634960.cpp" line="4"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;indicator=1&amp;#039; is always true" verbose="Condition &amp;#039;indicator=1&amp;#039; is always true" cwe="571">
+            <location file="post-23735596.cpp" line="42"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;indicator=2&amp;#039; is always true" verbose="Condition &amp;#039;indicator=2&amp;#039; is always true" cwe="571">
+            <location file="post-23735596.cpp" line="50"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;index&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;index&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-24267993-2.cpp" line="5"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;received&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;received&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-24742504.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MyBoard&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MyBoard&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24758754-3.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;AD7813&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;AD7813&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24758754-4.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Board&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Board&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24758754.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;GPIOPort&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;GPIOPort&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24759886.cpp" line="16"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;used_ports&amp;amp;partition&amp;#039; is always false" verbose="Condition &amp;#039;used_ports&amp;amp;partition&amp;#039; is always false" cwe="570">
+            <location file="post-24759886.cpp" line="23" info="Condition &amp;#039;used_ports&amp;amp;partition&amp;#039; is always false"/>
+            <location file="post-24759886.cpp" line="17" info="Assignment &amp;#039;used_ports=0&amp;#039;, assigned value is 0"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::any_of, std::all_of, std::none_of, or std::accumulate algorithm instead of a raw loop." verbose="Consider using std::any_of, std::all_of, std::none_of, or std::accumulate algorithm instead of a raw loop." cwe="398">
+            <location file="post-24759886.cpp" line="42"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: shutdown" verbose="Uninitialized variable: shutdown" cwe="457">
+            <location file="post-24759886.cpp" line="42"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Device&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Device&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24760569.cpp" line="9"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;LEDBoard&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;LEDBoard&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-24760569.cpp" line="30"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;uNibble&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;uNibble&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-24996105-2.cpp" line="6"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;uNibble&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;uNibble&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-24996105.cpp" line="6"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;n&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;n&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-25153311.cpp" line="17"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;runningAverage&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;runningAverage&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-25153311.cpp" line="7"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;runningAverage &amp;lt; 10 &amp;gt;&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;runningAverage &amp;lt; 10 &amp;gt;&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-25153423.cpp" line="2"/>
+        </error>
+        <error id="danglingLifetime" severity="error" msg="Non-local variable &amp;#039;nextState&amp;#039; will use pointer to local variable &amp;#039;tempState&amp;#039;." verbose="Non-local variable &amp;#039;nextState&amp;#039; will use pointer to local variable &amp;#039;tempState&amp;#039;." cwe="562">
+            <location file="post-25185476.cpp" line="28" info=""/>
+            <location file="post-25185476.cpp" line="24" info="Variable created here."/>
+            <location file="post-25185476.cpp" line="28" info="Address of variable taken here."/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Foo&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Foo&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-25219783.cpp" line="8"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Scenario&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Scenario&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-25344516.cpp" line="16"/>
+        </error>
+        <error id="pointerSize" severity="warning" msg="Size of pointer &amp;#039;buffer&amp;#039; used instead of size of its data." verbose="Size of pointer &amp;#039;buffer&amp;#039; used instead of size of its data. This is likely to lead to a buffer overflow. You probably intend to write &amp;#039;sizeof(*buffer)&amp;#039;." cwe="467">
+            <location file="post-25580526-2.cpp" line="24"/>
+        </error>
+        <error id="returnDanglingLifetime" severity="error" msg="Returning pointer to local variable &amp;#039;buffer&amp;#039; that will be invalid when returning." verbose="Returning pointer to local variable &amp;#039;buffer&amp;#039; that will be invalid when returning." cwe="562">
+            <location file="post-25580526.cpp" line="21" info=""/>
+            <location file="post-25580526.cpp" line="15" info="Variable created here."/>
+            <location file="post-25580526.cpp" line="21" info="Array decayed to pointer here."/>
+        </error>
+        <error id="returnDanglingLifetime" severity="error" msg="Returning pointer to local variable &amp;#039;fix&amp;#039; that will be invalid when returning." verbose="Returning pointer to local variable &amp;#039;fix&amp;#039; that will be invalid when returning." cwe="562">
+            <location file="post-25827521.cpp" line="34" info=""/>
+            <location file="post-25827521.cpp" line="9" info="Variable created here."/>
+            <location file="post-25827521.cpp" line="34" info="Array decayed to pointer here."/>
+        </error>
+        <error id="redundantInitialization" severity="style" msg="Redundant initialization for &amp;#039;down&amp;#039;. The initialized value is overwritten before it is read." verbose="Redundant initialization for &amp;#039;down&amp;#039;. The initialized value is overwritten before it is read." cwe="563">
+            <location file="post-26087477.cpp" line="21" info="down is overwritten"/>
+            <location file="post-26087477.cpp" line="19" info="down is initialized"/>
+        </error>
+        <error id="wrongPrintfScanfArgNum" severity="warning" msg="sprintf format string requires 0 parameters but 1 is given." verbose="sprintf format string requires 0 parameters but 1 is given." cwe="685">
+            <location file="post-26484776.cpp" line="67"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;outBuf&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;outBuf&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-26484776.cpp" line="81"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;LinkedList&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;LinkedList&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-27192363.cpp" line="2"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." cwe="686">
+            <location file="post-28501330.cpp" line="31"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." cwe="686">
+            <location file="post-28501330.cpp" line="32"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." cwe="686">
+            <location file="post-28501330.cpp" line="34"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." cwe="686">
+            <location file="post-28501330.cpp" line="35"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;fstring&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;fstring&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-28825798.cpp" line="5"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;example&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;example&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-28909945.cpp" line="1"/>
+        </error>
+        <error id="arithOperationsOnVoidPointer" severity="portability" msg="&amp;#039;map_base&amp;#039; is of type &amp;#039;void *&amp;#039;. When using void pointers in calculations, the behaviour is undefined." verbose="&amp;#039;map_base&amp;#039; is of type &amp;#039;void *&amp;#039;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &amp;#039;void *&amp;#039; is a GNU C extension, which defines the &amp;#039;sizeof(void)&amp;#039; to be 1." cwe="467">
+            <location file="post-30382989.cpp" line="20"/>
+        </error>
+        <error id="arithOperationsOnVoidPointer" severity="portability" msg="&amp;#039;map_base&amp;#039; is of type &amp;#039;void *&amp;#039;. When using void pointers in calculations, the behaviour is undefined." verbose="&amp;#039;map_base&amp;#039; is of type &amp;#039;void *&amp;#039;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &amp;#039;void *&amp;#039; is a GNU C extension, which defines the &amp;#039;sizeof(void)&amp;#039; to be 1." cwe="467">
+            <location file="post-30382989.cpp" line="48"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;blink_count&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;blink_count&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-31166790-2.cpp" line="5"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;timer_prev_100ms&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;timer_prev_100ms&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-31166790-2.cpp" line="6"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="portability" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;size_t {aka unsigned long}&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;size_t {aka unsigned long}&amp;#039;." cwe="686">
+            <location file="post-31507923.cpp" line="5"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="portability" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;size_t {aka unsigned long}&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;size_t {aka unsigned long}&amp;#039;." cwe="686">
+            <location file="post-31507923.cpp" line="6"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;weiter==1&amp;#039; is always false" verbose="Condition &amp;#039;weiter==1&amp;#039; is always false" cwe="570">
+            <location file="post-31754875.cpp" line="55" info="Condition &amp;#039;weiter==1&amp;#039; is always false"/>
+            <location file="post-31754875.cpp" line="28" info="Assuming that condition &amp;#039;weiter==true&amp;#039; is not redundant"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." verbose="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." cwe="686">
+            <location file="post-3271018.cpp" line="4"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;vClass&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;vClass&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-32988850-2.cpp" line="1"/>
+        </error>
+        <error id="memleakOnRealloc" severity="error" msg="Common realloc mistake: &amp;#039;d&amp;#039; nulled but not freed upon failure" verbose="Common realloc mistake: &amp;#039;d&amp;#039; nulled but not freed upon failure" cwe="401">
+            <location file="post-33260205.cpp" line="24"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." verbose="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." cwe="686">
+            <location file="post-33265128.cpp" line="117"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 2) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." verbose="%u in format string (no. 2) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." cwe="686">
+            <location file="post-33265128.cpp" line="117"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 6) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." verbose="%u in format string (no. 6) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." cwe="686">
+            <location file="post-33265128.cpp" line="117"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." verbose="%u in format string (no. 1) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." cwe="686">
+            <location file="post-33265128.cpp" line="119"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 2) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." verbose="%u in format string (no. 2) requires &amp;#039;unsigned int&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." cwe="686">
+            <location file="post-33265128.cpp" line="119"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;val&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;val&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33265128.cpp" line="24"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;data&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;data&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33265128.cpp" line="99"/>
+        </error>
+        <error id="pointerSize" severity="warning" msg="Size of pointer &amp;#039;pdata&amp;#039; used instead of size of its data." verbose="Size of pointer &amp;#039;pdata&amp;#039; used instead of size of its data. This is likely to lead to a buffer overflow. You probably intend to write &amp;#039;sizeof(*pdata)&amp;#039;." cwe="467">
+            <location file="post-33265128.cpp" line="104"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;a2dVal&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;a2dVal&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33325411-2.cpp" line="17"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;a2dVol&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;a2dVol&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33325411-2.cpp" line="18"/>
+        </error>
+        <error id="redundantAssignment" severity="style" msg="Variable &amp;#039;a2dVal&amp;#039; is reassigned a value before the old one has been used." verbose="Variable &amp;#039;a2dVal&amp;#039; is reassigned a value before the old one has been used." cwe="563">
+            <location file="post-33325411.cpp" line="26" info="a2dVal is overwritten"/>
+            <location file="post-33325411.cpp" line="25" info="a2dVal is assigned"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;a2dVal&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;a2dVal&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33325411.cpp" line="15"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;a2dVol&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;a2dVol&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33325411.cpp" line="16"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;last_input_value&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;last_input_value&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-33395761-2.cpp" line="13"/>
+        </error>
+        <error id="objectIndex" severity="warning" msg="The address of local variable &amp;#039;cv&amp;#039; might be accessed at non-zero index." verbose="The address of local variable &amp;#039;cv&amp;#039; might be accessed at non-zero index." cwe="758">
+            <location file="post-34113238-3.cpp" line="16" info=""/>
+            <location file="post-34113238-3.cpp" line="14" info="Address of variable taken here."/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;ledControler&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;ledControler&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-34503416.cpp" line="7"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;val_in_EEPROM&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;val_in_EEPROM&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-34582497-2.cpp" line="7" info="Shadow variable"/>
+            <location file="post-34582497-2.cpp" line="1" info="Shadowed declaration"/>
+        </error>
+        <error id="uselessAssignmentArg" severity="style" msg="Assignment of function parameter has no effect outside the function." verbose="Assignment of function parameter has no effect outside the function." cwe="398">
+            <location file="post-34597599.cpp" line="2"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Base&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Base&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-34682045.cpp" line="1"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Derived&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Derived&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-34682045.cpp" line="3"/>
+        </error>
+        <error id="uninitStructMember" severity="error" msg="Uninitialized struct member: d.z" verbose="Uninitialized struct member: d.z" cwe="457">
+            <location file="post-34682045.cpp" line="8"/>
+        </error>
+        <error id="uninitStructMember" severity="error" msg="Uninitialized struct member: d.w" verbose="Uninitialized struct member: d.w" cwe="457">
+            <location file="post-34682045.cpp" line="8"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: d" verbose="Uninitialized variable: d" cwe="457">
+            <location file="post-34682045.cpp" line="8"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;A&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;A&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-34812896.cpp" line="8"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;c&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;c&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-34959006.cpp" line="6"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: t" verbose="Uninitialized variable: t" cwe="457">
+            <location file="post-35024024-3.cpp" line="10"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." verbose="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." cwe="686">
+            <location file="post-35033032.cpp" line="87"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." verbose="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;unsigned long&amp;#039;." cwe="686">
+            <location file="post-35033831.cpp" line="75"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." verbose="%d in format string (no. 1) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;unsigned int&amp;#039;." cwe="686">
+            <location file="post-35484971.cpp" line="139"/>
+        </error>
+        <error id="invalidPrintfArgType_uint" severity="warning" msg="%hhx in format string (no. 1) requires &amp;#039;unsigned char&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." verbose="%hhx in format string (no. 1) requires &amp;#039;unsigned char&amp;#039; but the argument type is &amp;#039;signed int&amp;#039;." cwe="686">
+            <location file="post-35484971.cpp" line="264"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;A&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;A&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-35530101.cpp" line="1"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Node&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Node&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-35759510-4.cpp" line="5"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Node&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Node&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-35768838-3.cpp" line="2"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;pH::Stable&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;pH::Stable&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-35843096.cpp" line="14"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;pH::previousMillis&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;pH::previousMillis&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-35843096.cpp" line="14"/>
+        </error>
+        <error id="noCopyConstructor" severity="warning" msg="Class &amp;#039;LedCube&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;LedCube&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-36174060-2.cpp" line="21"/>
+        </error>
+        <error id="noOperatorEq" severity="warning" msg="Class &amp;#039;LedCube&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;LedCube&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-36174060-2.cpp" line="21"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;TRef&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;TRef&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-36205031.cpp" line="2"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;packCont&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;packCont&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-36208035.cpp" line="60"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TempController&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TempController&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-36270201.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TempController&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TempController&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-36270201.cpp" line="6"/>
+        </error>
+        <error id="constParameter" severity="style" msg="Parameter &amp;#039;t&amp;#039; can be declared with const" verbose="Parameter &amp;#039;t&amp;#039; can be declared with const" cwe="398">
+            <location file="post-36270201.cpp" line="5"/>
+        </error>
+        <error id="AssignmentIntegerToAddress" severity="portability" msg="Assigning an integer to a pointer is not portable." verbose="Assigning an integer (int/long/etc) to a pointer is not portable across different platforms and compilers. For example in 32-bit Windows and linux they are same width, but in 64-bit Windows and linux they are of different width. In worst case you end up assigning 64-bit integer to 32-bit pointer. The safe way is to store addresses only in pointer types (or typedefs like uintptr_t)." cwe="758">
+            <location file="post-36435715.cpp" line="10"/>
+        </error>
+        <error id="AssignmentIntegerToAddress" severity="portability" msg="Assigning an integer to a pointer is not portable." verbose="Assigning an integer (int/long/etc) to a pointer is not portable across different platforms and compilers. For example in 32-bit Windows and linux they are same width, but in 64-bit Windows and linux they are of different width. In worst case you end up assigning 64-bit integer to 32-bit pointer. The safe way is to store addresses only in pointer types (or typedefs like uintptr_t)." cwe="758">
+            <location file="post-36435715.cpp" line="11"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;Remainder&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;Remainder&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-36561669-2.cpp" line="15"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;Remainder&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;Remainder&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-36561669.cpp" line="15"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;web&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;web&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-36744053.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;ntp_client&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;ntp_client&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-37332650.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;ntp_client&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;ntp_client&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-37333268.cpp" line="11"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Wifi_ntp_client&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Wifi_ntp_client&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-37333268.cpp" line="24"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Ethernet_ntp_client&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Ethernet_ntp_client&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-37333268.cpp" line="37"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;firstRun&amp;#039; is always true" verbose="Condition &amp;#039;firstRun&amp;#039; is always true" cwe="571">
+            <location file="post-37424512-3.cpp" line="6" info="Condition &amp;#039;firstRun&amp;#039; is always true"/>
+            <location file="post-37424512-3.cpp" line="4" info="Assignment &amp;#039;firstRun(true)&amp;#039;, assigned value is 1"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;NECIRrcv&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;NECIRrcv&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-37425426.cpp" line="11"/>
+        </error>
+        <error id="memleak" severity="error" msg="Memory leak: charData" verbose="Memory leak: charData" cwe="401">
+            <location file="post-37585008-2.cpp" line="7"/>
+        </error>
+        <error id="memleak" severity="error" msg="Memory leak: byteData" verbose="Memory leak: byteData" cwe="401">
+            <location file="post-37585008-2.cpp" line="7"/>
+        </error>
+        <error id="constParameter" severity="style" msg="Parameter &amp;#039;root&amp;#039; can be declared with const" verbose="Parameter &amp;#039;root&amp;#039; can be declared with const" cwe="398">
+            <location file="post-37673354-2.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;myClass&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;myClass&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-38708913.cpp" line="5"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;signed char&amp;#039;." verbose="%ld in format string (no. 1) requires &amp;#039;long&amp;#039; but the argument type is &amp;#039;signed char&amp;#039;." cwe="686">
+            <location file="post-39354052.cpp" line="10"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-39841866.cpp" line="12"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-39841866.cpp" line="17"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-39855376.cpp" line="36"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-39855376.cpp" line="41"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;fn&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;fn&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-39867143.cpp" line="37"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;c&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;c&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-40093486.cpp" line="11"/>
+        </error>
+        <error id="shiftTooManyBitsSigned" severity="portability" msg="Shifting signed 32-bit value by 31 bits is implementation-defined behaviour" verbose="Shifting signed 32-bit value by 31 bits is implementation-defined behaviour" cwe="758">
+            <location file="post-40451154.cpp" line="5"/>
+        </error>
+        <error id="shiftTooManyBitsSigned" severity="portability" msg="Shifting signed 32-bit value by 31 bits is implementation-defined behaviour" verbose="Shifting signed 32-bit value by 31 bits is implementation-defined behaviour" cwe="758">
+            <location file="post-40451154.cpp" line="7"/>
+        </error>
+        <error id="integerOverflow" severity="error" msg="Signed integer overflow for expression &amp;#039;1&amp;lt;&amp;lt;31&amp;#039;." verbose="Signed integer overflow for expression &amp;#039;1&amp;lt;&amp;lt;31&amp;#039;." cwe="190">
+            <location file="post-40451154.cpp" line="5"/>
+        </error>
+        <error id="integerOverflow" severity="error" msg="Signed integer overflow for expression &amp;#039;1&amp;lt;&amp;lt;31&amp;#039;." verbose="Signed integer overflow for expression &amp;#039;1&amp;lt;&amp;lt;31&amp;#039;." cwe="190">
+            <location file="post-40451154.cpp" line="7"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-40623487.cpp" line="19"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-40623487.cpp" line="46"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-40623487.cpp" line="52"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-41075677-2.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-41075677.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;FTester&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-41080636.cpp" line="6"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;cR&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;cR&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-41272703.cpp" line="3"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;statusName&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;statusName&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-41430662.cpp" line="11"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;x&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;x&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-41430662.cpp" line="42"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;x&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;x&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-41430662.cpp" line="65"/>
+        </error>
+        <error id="noCopyConstructor" severity="warning" msg="Class &amp;#039;StateFactory&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;StateFactory&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-41430662.cpp" line="90"/>
+        </error>
+        <error id="noOperatorEq" severity="warning" msg="Class &amp;#039;StateFactory&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;StateFactory&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-41430662.cpp" line="90"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Operations2&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Operations2&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-41724363-2.cpp" line="34"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MainWindow2&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MainWindow2&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-41724363-2.cpp" line="55"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: binary" verbose="Uninitialized variable: binary" cwe="457">
+            <location file="post-41754745-2.cpp" line="15"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;Sum&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;Sum&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-41764142.cpp" line="1"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;blueVariable&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;blueVariable&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-42388182.cpp" line="4"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;greenVariable&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;greenVariable&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-42388182.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Light&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Light&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-43286729-2.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;hexset&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;hexset&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-43418731.cpp" line="6"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;myClass&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;myClass&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-4359039.cpp" line="1"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;myClass&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;myClass&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-4359054.cpp" line="1"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;mt&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;mt&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-4359061.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Controller&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Controller&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-43703784-2.cpp" line="21"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Shutter&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Shutter&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-43789817.cpp" line="7"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;i&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;i&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-43824307-3.cpp" line="8"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;i&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;i&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-43824307-6.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MenuTreeNode&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MenuTreeNode&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-44078453.cpp" line="9"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;nChip&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;nChip&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-4524111.cpp" line="12"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;bitval&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;bitval&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-4524111.cpp" line="15"/>
+        </error>
+        <error id="useInitializationList" severity="performance" msg="Variable &amp;#039;addr&amp;#039; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&amp;#039;t explicitly write them to the initialization list. You could avoid assigning &amp;#039;addr&amp;#039; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file="post-4524111.cpp" line="16"/>
+        </error>
+        <error id="clarifyCalculation" severity="style" msg="Clarify calculation precedence for &amp;#039;&amp;amp;&amp;#039; and &amp;#039;?&amp;#039;." verbose="Suspicious calculation. Please use parentheses to clarify the code. The code &amp;#039;&amp;#039;a&amp;amp;b?c:d&amp;#039;&amp;#039; should be written as either &amp;#039;&amp;#039;(a&amp;amp;b)?c:d&amp;#039;&amp;#039; or &amp;#039;&amp;#039;a&amp;amp;(b?c:d)&amp;#039;&amp;#039;." cwe="783">
+            <location file="post-4524111.cpp" line="25"/>
+        </error>
+        <error id="clarifyCalculation" severity="style" msg="Clarify calculation precedence for &amp;#039;&amp;amp;&amp;#039; and &amp;#039;?&amp;#039;." verbose="Suspicious calculation. Please use parentheses to clarify the code. The code &amp;#039;&amp;#039;a&amp;amp;b?c:d&amp;#039;&amp;#039; should be written as either &amp;#039;&amp;#039;(a&amp;amp;b)?c:d&amp;#039;&amp;#039; or &amp;#039;&amp;#039;a&amp;amp;(b?c:d)&amp;#039;&amp;#039;." cwe="783">
+            <location file="post-4524111.cpp" line="26"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MidiHandler&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MidiHandler&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-45267685.cpp" line="4"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: ret" verbose="Uninitialized variable: ret" cwe="457">
+            <location file="post-45398726.cpp" line="10"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;r&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;r&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-45746878.cpp" line="20"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;valid&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;valid&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-46465908.cpp" line="62"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Client&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Client&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-47358047.cpp" line="8"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;AM_2301&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;AM_2301&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-47475409.cpp" line="14"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;RP&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;RP&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-47719243-3.cpp" line="45"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MD&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MD&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-47719243-3.cpp" line="86"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;reading&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;reading&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-47901638-2.cpp" line="30"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Stepper&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Stepper&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48137835-2.cpp" line="10"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Stepper&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Stepper&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48137835.cpp" line="10"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;tmp_char&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;tmp_char&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-48380857.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;variable_of_type&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;variable_of_type&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48475418.cpp" line="13"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;EventArgs&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;EventArgs&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48549454.cpp" line="17"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398">
+            <location file="post-48549454.cpp" line="67"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398">
+            <location file="post-48549454.cpp" line="73"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398">
+            <location file="post-48549454.cpp" line="79"/>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398">
+            <location file="post-48549454.cpp" line="85"/>
+        </error>
+        <error id="constVariable" severity="style" msg="Variable &amp;#039;handlers&amp;#039; can be declared with const" verbose="Variable &amp;#039;handlers&amp;#039; can be declared with const" cwe="398">
+            <location file="post-48549454.cpp" line="44"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;clock_observable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;clock_observable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48557412.cpp" line="48"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;account_observable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;account_observable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48557412.cpp" line="69"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;hierarchy&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;hierarchy&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767-6.cpp" line="20"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;hierarchy&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;hierarchy&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767-6.cpp" line="38"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;observer_base&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;observer_base&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767-7.cpp" line="15"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;clock_observable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;clock_observable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767.cpp" line="53"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;account_observable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;account_observable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767.cpp" line="83"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;temperature_observable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;temperature_observable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-48566767.cpp" line="112"/>
+        </error>
+        <error id="strdupCalled" severity="style" msg="Obsolete function &amp;#039;strdup&amp;#039; called. It is recommended to use &amp;#039;_strdup&amp;#039; instead." verbose="Obsolete function &amp;#039;strdup&amp;#039; called. It is recommended to use &amp;#039;_strdup&amp;#039; instead." cwe="477">
+            <location file="post-48603804-3.cpp" line="11"/>
+        </error>
+        <error id="uselessAssignmentPtrArg" severity="warning" msg="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" verbose="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" cwe="398">
+            <location file="post-48603804.cpp" line="4"/>
+        </error>
+        <error id="uselessAssignmentPtrArg" severity="warning" msg="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" verbose="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" cwe="398">
+            <location file="post-48603804.cpp" line="6"/>
+        </error>
+        <error id="uselessAssignmentPtrArg" severity="warning" msg="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" verbose="Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?" cwe="398">
+            <location file="post-48603804.cpp" line="7"/>
+        </error>
+        <error id="strdupCalled" severity="style" msg="Obsolete function &amp;#039;strdup&amp;#039; called. It is recommended to use &amp;#039;_strdup&amp;#039; instead." verbose="Obsolete function &amp;#039;strdup&amp;#039; called. It is recommended to use &amp;#039;_strdup&amp;#039; instead." cwe="477">
+            <location file="post-49121546.cpp" line="10"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;A::callback&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;A::callback&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-49191686.cpp" line="27"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;TimerFake&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;TimerFake&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-49191686.cpp" line="32"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;A&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;A&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-49191686.cpp" line="27"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;avail_Afree&amp;#039; is always true" verbose="Condition &amp;#039;avail_Afree&amp;#039; is always true" cwe="571">
+            <location file="post-49226416.cpp" line="153" info="Condition &amp;#039;avail_Afree&amp;#039; is always true"/>
+            <location file="post-49226416.cpp" line="113" info="Assignment &amp;#039;avail_Afree=1&amp;#039;, assigned value is 1"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;twoSixByte&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;twoSixByte&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-50179256.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;CDScreen&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;CDScreen&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-50203140-2.cpp" line="7"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;CDFrame&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;CDFrame&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-50203140.cpp" line="7"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;CDFrame&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;CDFrame&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-50203306.cpp" line="7"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;CDScreen&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;CDScreen&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-50203306.cpp" line="17"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;c&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;c&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-50279664.cpp" line="8"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MyLabel&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MyLabel&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-51023233.cpp" line="5"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;data=true&amp;#039; is always true" verbose="Condition &amp;#039;data=true&amp;#039; is always true" cwe="571">
+            <location file="post-51088121.cpp" line="7"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;LinxArduinoEthernetListener&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;LinxArduinoEthernetListener&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-51331639.cpp" line="6"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;Stoplight::previousMillis&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;Stoplight::previousMillis&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-51408145.cpp" line="25"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;Stoplight::CurInterval&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;Stoplight::CurInterval&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-51408145.cpp" line="25"/>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;Stoplight::state&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;Stoplight::state&amp;#039; is not initialized in the constructor." cwe="398">
+            <location file="post-51408145.cpp" line="25"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Object&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Object&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-51425069.cpp" line="5"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;rc&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;rc&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-51640003.cpp" line="70"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;check&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;check&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-51640003.cpp" line="71"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;fp&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;fp&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-51823413.cpp" line="8"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;url&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;url&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-51823413.cpp" line="10"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;outfilename&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;outfilename&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-51823413.cpp" line="11"/>
+        </error>
+        <error id="arrayIndexOutOfBounds" severity="error" msg="Array &amp;#039;XCode[18]&amp;#039; accessed at index 124, which is out of bounds." verbose="Array &amp;#039;XCode[18]&amp;#039; accessed at index 124, which is out of bounds." cwe="788">
+            <location file="post-52789041.cpp" line="7"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;n&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;n&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-52856558-2.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Parameter&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Parameter&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-52856558.cpp" line="3"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;serialObject&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;serialObject&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-52963674.cpp" line="11" info="Shadow variable"/>
+            <location file="post-52963674.cpp" line="8" info="Shadowed declaration"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;cMonoStable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;cMonoStable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-53121168-3.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;cPhotoDiodeTriggeredMonostable&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;cPhotoDiodeTriggeredMonostable&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-53121168-3.cpp" line="26"/>
+        </error>
+        <error id="noCopyConstructor" severity="warning" msg="Class &amp;#039;Foo&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;Foo&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-53123121.cpp" line="21"/>
+        </error>
+        <error id="noOperatorEq" severity="warning" msg="Class &amp;#039;Foo&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;Foo&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file="post-53123121.cpp" line="21"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Foo&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Foo&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-53123121.cpp" line="20"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;barInstance&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;barInstance&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-53123121.cpp" line="20"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;MyButton&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;MyButton&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-53226584.cpp" line="1"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;sa&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;sa&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-53237093.cpp" line="95" info="Shadow variable"/>
+            <location file="post-53237093.cpp" line="79" info="Shadowed declaration"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;bufsz&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;bufsz&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-53237093.cpp" line="105" info="Shadow variable"/>
+            <location file="post-53237093.cpp" line="76" info="Shadowed declaration"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;ret&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;ret&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-53237093.cpp" line="144" info="Shadow variable"/>
+            <location file="post-53237093.cpp" line="102" info="Shadowed declaration"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &amp;#039;!done&amp;#039; is always true" verbose="Condition &amp;#039;!done&amp;#039; is always true" cwe="571">
+            <location file="post-53585255.cpp" line="46" info="Condition &amp;#039;!done&amp;#039; is always true"/>
+            <location file="post-53585255.cpp" line="29" info="Assignment &amp;#039;done=false&amp;#039;, assigned value is 0"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;current_recv_data_buf&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;current_recv_data_buf&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-53585255.cpp" line="34" info="Shadow variable"/>
+            <location file="post-53585255.cpp" line="15" info="Shadowed declaration"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;ByteArray&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;ByteArray&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-53613013.cpp" line="10"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;arrName&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;arrName&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-53939190.cpp" line="16"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;name&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;name&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-53939190.cpp" line="16"/>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &amp;#039;name&amp;#039; should be passed by const reference." verbose="Parameter &amp;#039;name&amp;#039; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file="post-53939190.cpp" line="36"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: ptr" verbose="Uninitialized variable: ptr" cwe="457">
+            <location file="post-53939190.cpp" line="23"/>
+        </error>
+        <error id="selfInitialization" severity="error" msg="Member variable &amp;#039;f&amp;#039; is initialized by itself." verbose="Member variable &amp;#039;f&amp;#039; is initialized by itself." cwe="665">
+            <location file="post-54066668.cpp" line="11"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;SysLogHelper&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;SysLogHelper&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-54158227.cpp" line="6"/>
+        </error>
+        <error id="constParameter" severity="style" msg="Parameter &amp;#039;elem&amp;#039; can be declared with const" verbose="Parameter &amp;#039;elem&amp;#039; can be declared with const" cwe="398">
+            <location file="post-54167315.cpp" line="186"/>
+        </error>
+        <error id="duplInheritedMember" severity="warning" msg="The class &amp;#039;ClassB&amp;#039; defines member variable with name &amp;#039;typeinfo&amp;#039; also defined in its parent class &amp;#039;ClassA&amp;#039;." verbose="The class &amp;#039;ClassB&amp;#039; defines member variable with name &amp;#039;typeinfo&amp;#039; also defined in its parent class &amp;#039;ClassA&amp;#039;." cwe="398">
+            <location file="post-54206070.cpp" line="40" info="Derived variable &amp;#039;ClassB::typeinfo&amp;#039;"/>
+            <location file="post-54206070.cpp" line="33" info="Parent variable &amp;#039;ClassA::typeinfo&amp;#039;"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 2) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 2) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915-2.cpp" line="31"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 4) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 4) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915-2.cpp" line="31"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 6) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 6) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915-2.cpp" line="31"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 8) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 8) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915-2.cpp" line="31"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: strtokIndx" verbose="Uninitialized variable: strtokIndx" cwe="457">
+            <location file="post-54273915-2.cpp" line="61"/>
+        </error>
+        <error id="uninitvar" severity="error" msg="Uninitialized variable: strtokIndx" verbose="Uninitialized variable: strtokIndx" cwe="457">
+            <location file="post-54273915-2.cpp" line="34" info=""/>
+            <location file="post-54273915-2.cpp" line="61" info="Calling function &amp;#039;printAllObjects&amp;#039;, 3rd argument &amp;#039;strtokIndx&amp;#039; value is &amp;lt;Uninit&amp;gt;"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 2) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 2) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915.cpp" line="3"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 4) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 4) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915.cpp" line="3"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 6) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 6) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915.cpp" line="3"/>
+        </error>
+        <error id="invalidPrintfArgType_sint" severity="warning" msg="%d in format string (no. 8) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." verbose="%d in format string (no. 8) requires &amp;#039;int&amp;#039; but the argument type is &amp;#039;char *&amp;#039;." cwe="686">
+            <location file="post-54273915.cpp" line="3"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;Uint24_t&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;Uint24_t&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-54312099.cpp" line="25"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;args&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;args&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-54556420.cpp" line="55" info="Shadow variable"/>
+            <location file="post-54556420.cpp" line="45" info="Shadowed declaration"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;UniColor&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;UniColor&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-54595238.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;ApiClient&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;ApiClient&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-54752633-3.cpp" line="4"/>
+        </error>
+        <error id="noConstructor" severity="style" msg="The class &amp;#039;i2cController&amp;#039; does not have a constructor although it has private member variables." verbose="The class &amp;#039;i2cController&amp;#039; does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior." cwe="398">
+            <location file="post-55009808.cpp" line="1"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;temperaturaPOO&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;temperaturaPOO&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-55563092.cpp" line="12"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;temperaturaPOO&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;temperaturaPOO&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-55563201.cpp" line="10"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::find_if algorithm instead of a raw loop." verbose="Consider using std::find_if algorithm instead of a raw loop." cwe="398">
+            <location file="post-55740265.cpp" line="5"/>
+        </error>
+        <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++." cwe="398">
+            <location file="post-56085530.cpp" line="20"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;last_on_time&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;last_on_time&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-56117309-2.cpp" line="8"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;last_on_time&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;last_on_time&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-56117309.cpp" line="8"/>
+        </error>
+        <error id="redundantInitialization" severity="style" msg="Redundant initialization for &amp;#039;tok&amp;#039;. The initialized value is overwritten before it is read." verbose="Redundant initialization for &amp;#039;tok&amp;#039;. The initialized value is overwritten before it is read." cwe="563">
+            <location file="post-56957155.cpp" line="9" info="tok is overwritten"/>
+            <location file="post-56957155.cpp" line="7" info="tok is initialized"/>
+        </error>
+        <error id="literalWithCharPtrCompare" severity="warning" msg="String literal compared with variable &amp;#039;theType&amp;#039;. Did you intend to use strcmp() instead?" verbose="String literal compared with variable &amp;#039;theType&amp;#039;. Did you intend to use strcmp() instead?" cwe="595">
+            <location file="post-56970006-2.cpp" line="4"/>
+        </error>
+        <error id="literalWithCharPtrCompare" severity="warning" msg="String literal compared with variable &amp;#039;theType&amp;#039;. Did you intend to use strcmp() instead?" verbose="String literal compared with variable &amp;#039;theType&amp;#039;. Did you intend to use strcmp() instead?" cwe="595">
+            <location file="post-56970006.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MyClass&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MyClass&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57455124.cpp" line="5"/>
+        </error>
+        <error id="objectIndex" severity="warning" msg="The address of local variable &amp;#039;dest&amp;#039; might be accessed at non-zero index." verbose="The address of local variable &amp;#039;dest&amp;#039; might be accessed at non-zero index." cwe="758">
+            <location file="post-57499584-3.cpp" line="9" info=""/>
+            <location file="post-57499584-3.cpp" line="5" info="Address of variable taken here."/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;Checkout&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;Checkout&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57499584-5.cpp" line="5"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TestClass &amp;lt; decltype ( doStuff ) &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TestClass &amp;lt; decltype ( doStuff ) &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57550329.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;TestClass &amp;lt; decltype ( doAnotherStuff ) &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;TestClass &amp;lt; decltype ( doAnotherStuff ) &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57550329.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;function&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;function&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57550576.cpp" line="18"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &amp;#039;Map &amp;lt; void ( Parent :: * ) ( int ) , 3 &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Struct &amp;#039;Map &amp;lt; void ( Parent :: * ) ( int ) , 3 &amp;gt;&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-57568938.cpp" line="12"/>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &amp;#039;dwBytesTotal&amp;#039; can be reduced." verbose="The scope of the variable &amp;#039;dwBytesTotal&amp;#039; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &amp;#039;i&amp;#039; can be reduced:&#10;void f(int x)&#10;{&#10;    int i = 0;&#10;    if (x) {&#10;        // it&amp;#039;s safe to move &amp;#039;int i = 0;&amp;#039; here&#10;        for (int n = 0; n &amp;lt; 10; ++n) {&#10;            // it is possible but not safe to move &amp;#039;int i = 0;&amp;#039; here&#10;            do_something(&amp;amp;i);&#10;        }&#10;    }&#10;}&#10;When you see this message it is always safe to reduce the variable scope 1 level." cwe="398">
+            <location file="post-6056338.cpp" line="38"/>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &amp;#039;AvgCount&amp;#039; shadows outer variable" verbose="Local variable &amp;#039;AvgCount&amp;#039; shadows outer variable" cwe="398">
+            <location file="post-7295736-2.cpp" line="35" info="Shadow variable"/>
+            <location file="post-7295736-2.cpp" line="5" info="Shadowed declaration"/>
+        </error>
+        <error id="unreachableCode" severity="style" msg="Statements following return, break, continue, goto or throw will never be executed." verbose="Statements following return, break, continue, goto or throw will never be executed." cwe="561">
+            <location file="post-8087366-2.cpp" line="14"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;bitbuffer&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;bitbuffer&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-8087796.cpp" line="6"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;A&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;A&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-8737814.cpp" line="4"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &amp;#039;MyHaltStruct&amp;#039; has a constructor with 1 argument that is not explicit." verbose="Class &amp;#039;MyHaltStruct&amp;#039; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file="post-8819664.cpp" line="4"/>
+        </error>
+    </errors>
+</results>

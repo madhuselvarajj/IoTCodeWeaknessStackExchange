@@ -1,6 +1,6 @@
 # IoTCodeWeaknessStackExchange
 
-## Codes Folder
+## Code Folder
 Contains code used in the study.
 * cppcheck-results-analysis: analyze CWE information from cppcheck results, and question view counts
 * cve-types-scores: analyze CVSS score distribution of CVE types 

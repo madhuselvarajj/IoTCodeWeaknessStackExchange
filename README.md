@@ -1,5 +1,7 @@
 # IoTCodeWeaknessStackExchange
 
+The results and methods of our study can be found in this paper: IoTVulnerability.pdf
+
 ## Code Folder
 Contains code used in the study.
 * cppcheck-results-analysis: analyze CWE information from cppcheck results, and question view counts

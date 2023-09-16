@@ -1,20 +1,1093 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <title>Security Vulnerability Categories</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
-        <h1>Website</h1>
+        <h1>Examples of Vulnerable Code Snippets and their Solutions</h1>
     </header>
 
-    <section>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</p>
+    <div class="container">
+        <div class="category">
+            <h2>Memory Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 788: "Access of Memory Location After End of Buffer" from <a href="https://arduino.stackexchange.com/questions/14031/mpu9150-jeff-lib-fifo-overflow-interrupt-serial-print/14169#14169">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+<span class="weakness">uint8_t fifo_buffer[8];</span>
+int16_t acc_temp[3];
+int16_t gyro_x;
 
-        <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.</p>
-    </section>
+void loop(){
+    if(state_fifo_int){ // interrupt has triggered
+        blink(0,1);  // really quick blink // really quick blink
+        //Serial.println(x);
+        state_fifo_int = false;
+        accelGyroMag.resetFIFO();
+        accelGyroMag.getFIFOBytes(fifo_buffer,8); // fill in fifo bytes
+        accelGyroMag.getIntFIFOBufferOverflowStatus(); // read the INT_STATUS reg in order to clear the Latch. 
+        acc_temp[0] = (((int16_t)fifo_buffer[0]) << 8) | fifo_buffer[1];
+        acc_temp[1] = (((int16_t)fifo_buffer[2]) << 8) | fifo_buffer[3];
+        acc_temp[2] = (((int16_t)fifo_buffer[4]) << 8) | fifo_buffer[5];
+        gyro_x = (((int16_t)fifo_buffer[7]) << 8) | <span class="weakness">fifo_buffer[8];</span>
+        timeout = millis();
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">This code attemmpts to access memory in the variable fifo_buffer at a location that is larger than it's size. One solution to this could be to simply increase fifo_buffer from fifo_buffer[8] to fifo_buffer[9].</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+<span class="correction">uint8_t fifo_buffer[9];</span>
+int16_t acc_temp[3];
+int16_t gyro_x;
+
+void loop(){
+    if(state_fifo_int){ // interrupt has triggered
+        blink(0,1);  // really quick blink // really quick blink
+        //Serial.println(x);
+        state_fifo_int = false;
+        accelGyroMag.resetFIFO();
+        accelGyroMag.getFIFOBytes(fifo_buffer,8); // fill in fifo bytes
+        accelGyroMag.getIntFIFOBufferOverflowStatus(); // read the INT_STATUS reg in order to clear the Latch. 
+        acc_temp[0] = (((int16_t)fifo_buffer[0]) << 8) | fifo_buffer[1];
+        acc_temp[1] = (((int16_t)fifo_buffer[2]) << 8) | fifo_buffer[3];
+        acc_temp[2] = (((int16_t)fifo_buffer[4]) << 8) | fifo_buffer[5];
+        gyro_x = (((int16_t)fifo_buffer[7]) << 8) | <span class="correction">fifo_buffer[8];</span>
+        timeout = millis();
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="version">
+                <h3>Ex 2 - CWE 401:"Missing Release of Memory after Effective Lifetime" from <a href="https://stackoverflow.com/questions/37581925/how-to-convert-a-char-array-to-a-byte-array/37585008#37585008">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+void abs()
+{
+  <span class="weakness">char* charData = new char;</span>
+  *charData = 'h';
+ <span class="weakness"> BYTE* byteData = new BYTE;</span>
+  *byteData = *(BYTE*)charData; 
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here, charData and byteData are allocated memory but are then not deallocated before the function ends, which is improper memory management.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+void abs()
+{
+  char* charData = new char;
+  *charData = 'h';
+  BYTE* byteData = new BYTE;
+  *byteData = *(BYTE*)charData; 
+  <span class="correction">delete charData;</span>
+  <span class="correction">delete byteData;</span>
+
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+                <div class="version">
+                <h3>Ex 3 -  CWE 562: "Return of Stack Variable Address" from <a href="https://stackoverflow.com/questions/23194080/trash-on-arduino-serial-monitor-how-to-fix-it/23194097#23194097">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int *readPot() ///read potentiometer value
+{
+    int tempValue = analogRead(A0);
+    int *potValue = &tempValue;
+    <span class="weakness">return potValue; </span>
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">		The issue with the snippet is that the function returns a pointer to a local variable, which is automatically deallocated at the end of the function. This means the pointer that is returned is pointing to nothing, which will lead to unpredictable results if used.
+To fix this, memory will need to be allocated if the intention is the use the returned pointer. This pointer will then have to deallocated later when it is not longer being used. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int *readPot() ///read potentiometer value
+{
+    <span class="correction">int* potValue = new int; 
+    *potValue = analogRead(A0); </span>
+    return potValue;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="category">
+            <h2>Evaluation Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 570: "Expression is Always False" from <a href="https://raspberrypi.stackexchange.com/questions/76954/size-of-serial-port-read-size-in-c/76982#76982">Raspberry Pi Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;string.h&gt;
+
+#include &lt;wiringPi.h&gt;
+#include &lt;wiringSerial.h&gt;
+
+#define MAXLINE 120
+extern int serialOpenB (const char *device, const int baud, const int n);
+extern char * serialGets (char *buf, const int n, const int fd);
+char * rstrip(char *s) {
+    char *p = s + strlen(s)-1;
+    while<span class="weakness">((*p == '\n')||(*p == '\n'))</span> {
+        p--;
+    }
+    *p = '\0';
+    return s;
+}
+....
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">The while loop in this condition contains duplicate conditions, which makes no logical sense. So assuming the intent was to check for another char such as '\r', the code can be fixed like shown below. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;string.h&gt;
+
+#include &lt;wiringPi.h&gt;
+#include &lt;wiringSerial.h&gt;
+
+#define MAXLINE 120
+extern int serialOpenB (const char *device, const int baud, const int n);
+extern char * serialGets (char *buf, const int n, const int fd);
+char * rstrip(char *s) {
+    char *p = s + strlen(s)-1;
+    while((*p == '\n')||<span class="correction">(*p == '\r'))</span> {
+        p--;
+    }
+    *p = '\0';
+    return s;
+}
+....
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="version">
+                <h3>Ex 2 - CWE 783: "Operator Precedence Logic Error" from <a href="https://stackoverflow.com/questions/8464645/get-length-of-an-array-using-a-pointer/33570151#33570151">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int getSize(char* ch){
+    int tmp=0;
+    while (*ch) {
+    <span class="weakness">*ch++;</span>
+    tmp++;
+    }return tmp;}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here, the line *ch++; increments the pointer itself and not the value of the pointer. To fix this, ch++; should be used instead.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int getSize(char* ch){
+    int tmp=0;
+    while (*ch) {
+    <span class="correction">ch++;</span>
+    tmp++;
+    }return tmp;}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Initialization Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 457: "Use of Uninitialized Variable" from <a href="https://stackoverflow.com/questions/41754678/integer-to-binary-stored-in-an-array/41754745#41754745">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;bitset&gt;
+#define NUM_BITS 10
+int main(int argc, char *argv[])
+{
+    const int numBits = NUM_BITS;
+    <span class="weakness">bool binary[numBits];</span>
+    const int myValue = 1;
+
+    std::bitset<NUM_BITS> myBitset(myValue);
+    //for (int i = 0; i < NUM_BITS; i++)
+        //binary[i] = myBitset[i];
+
+    <span class="weakness">for(int i = 0, l = NUM_BITS; i < l; ++i) {
+        std::cout<< (binary[i]?'1':'0')<<" ";
+    }</span>
+    std::cout<<"\n";
+    int mask = 1; // binary 10000000 00000000 ...
+    for (int i = 0, l = NUM_BITS; i < l; ++i) {
+        // binary & operation does 
+        // AND logic operation for all corresponging bit
+        // so 0010&0011=0010
+        binary[i] = myValue & mask;
+        // move the bits in mask one to the right
+        mask = mask>>1;
+    }
+
+    for (int i = 0, l = NUM_BITS; i < l; ++i) {
+        std::cout<< (binary[i]?'1':'0')<<" ";
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">In the for loop highlighted in this code, the array "binary" is being accessed without being initialized first, which means you could potentially be reading garbage values. Since it is an array of boolean values, one option to initialize the variable to set all elements to false, which is shown below.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;bitset&gt;
+#define NUM_BITS 10
+int main(int argc, char *argv[])
+{
+    const int numBits = NUM_BITS;
+    <span class="correction">bool binary[numBits] = {false};</span>
+    const int myValue = 1;
+
+    std::bitset<NUM_BITS> myBitset(myValue);
+    //for (int i = 0; i < NUM_BITS; i++)
+        //binary[i] = myBitset[i];
+
+    for(int i = 0, l = NUM_BITS; i < l; ++i) {
+        std::cout<< (binary[i]?'1':'0')<<" ";
+    }
+    std::cout<<"\n";
+    int mask = 1; // binary 10000000 00000000 ...
+    for (int i = 0, l = NUM_BITS; i < l; ++i) {
+        // binary & operation does 
+        // AND logic operation for all corresponging bit
+        // so 0010&0011=0010
+        binary[i] = myValue & mask;
+        // move the bits in mask one to the right
+        mask = mask>>1;
+    }
+
+    for (int i = 0, l = NUM_BITS; i < l; ++i) {
+        std::cout<< (binary[i]?'1':'0')<<" ";
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version">
+                <h3>Ex 2 - CWE 457: "Use of Uninitialized Variable" from <a href="https://arduino.stackexchange.com/questions/47502/oboe-need-help-understanding-possible-type-conversion-issue/47503#47503">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int convertTo10(char *num_26, int len) {
+  int tmp = 0;  //hold the output
+  <span class="weakness">i;</span>  //indexing the input
+  while (len--) tmp = tmp * 26 + (<span class="weakness">num_26[i++]</span>-'A');
+  return tmp;
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">In this case, because the variable "i" is not initialized, the expression num_26[i++] will lead to unpredictable behaviour.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int convertTo10(char *num_26, int len) {
+  int tmp = 0;  //hold the output
+  <span class="correction">i=0;</span>  //indexing the input
+  while (len--) tmp = tmp * 26 + (num_26[i++]-'A');
+  return tmp;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="version">
+                <h3>Ex 3 - CWE 457: "Use of Uninitialized Variable" from <a href="https://stackoverflow.com/questions/45396221/arduino-hex-to-decimal-conversion/45398726#45398726">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+unsigned long hexToDec(String hexString) {
+    <span class="weakness">unsigned long ret;</span>
+    for(int i=0, n=hexString.length(); i!=n; ++i) {
+        char ch = hexString[i];
+        int val = 0;
+        if('0'<=ch && ch<='9')      val = ch - '0';
+        else if('a'<=ch && ch<='f') val = ch - 'a' + 10;
+        else if('A'<=ch && ch<='F') val = ch - 'A' + 10;
+        else continue; // skip non-hex characters
+        ret = <span class="weakness">ret*16</span> + val;
+    }
+    return ret;
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here the variable "ret" is uninitialized which means that the expression ret = ret*16 + val will lead to unpredictable results.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+unsigned long hexToDec(String hexString) {
+    <span class="correction">unsigned long ret=0;</span>
+    for(int i=0, n=hexString.length(); i!=n; ++i) {
+        char ch = hexString[i];
+        int val = 0;
+        if('0'<=ch && ch<='9')      val = ch - '0';
+        else if('a'<=ch && ch<='f') val = ch - 'a' + 10;
+        else if('A'<=ch && ch<='F') val = ch - 'A' + 10;
+        else continue; // skip non-hex characters
+        ret = ret*16 + val;
+    }
+    return ret;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Function Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 686: "Function Call With Incorrect Argument Type" from <a href="https://stackoverflow.com/questions/31507840/c-pointer-dereference-multiplication/31507923#31507923">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+int main(void) {
+    <span class = "weakness">printf("int has %d bytes\n",sizeof(int));
+    printf("long has %d bytes\n",sizeof(long));</span>
+
+    int a = INT_MAX;
+    int b = 2;
+
+    long var1 = a;
+    long var2 = b;
+
+    long var3 = a * b;
+    long var4 = var1 * var2;
+
+    printf ("var3=%ld\n", var3);
+    printf ("var4=%ld\n", var4);
+
+    return 0;
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">The issue in this snippet is the return type of the sizeof method is size_t, which is an unsigned int and not used with %d. So in the fixed code, %zu is used instead.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+
+int main(void) {
+    <span class = "correction">printf("int has %zu bytes\n",sizeof(int));
+    printf("long has %zu bytes\n",sizeof(long));</span>
+
+    int a = INT_MAX;
+    int b = 2;
+
+    long var1 = a;
+    long var2 = b;
+
+    long var3 = a * b;
+    long var4 = var1 * var2;
+
+    printf ("var3=%ld\n", var3);
+    printf ("var4=%ld\n", var4);
+
+    return 0;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version">
+                <h3>Ex 2 - CWE 686: "Function Call With Incorrect Argument Type"" from <a href="https://stackoverflow.com/questions/39353819/converting-an-int-to-string-in-c/39354052#39354052">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main()
+{
+  int8_t matt = 0;
+  matt += 1;
+  char string[1]; 
+  <span class="weakness">sprintf(string, "%ld", matt);</span>
+  std::cout << string << std::endl;
+  return 0;
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here the issue is that %ld is being used for an int8_t variable, which is not standard practice and could lead to issues later in terms of maintenance. In the fixed code, %d is used instead. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main()
+{
+  int8_t matt = 0;
+  matt += 1;
+  char string[1]; 
+  <span class="correction">sprintf(string, "%d", matt);</span>
+  std::cout << string << std::endl;
+  return 0;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Reachability Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 561: "Dead Code" from <a href="https://arduino.stackexchange.com/questions/42897/menu-with-switch-case-not-behaving-correctly/42974#42974">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+...
+
+if (ok.wasReleased()) {       
+    switch (menu_current) {          
+        case 0: 
+            screen = 2;
+            break;
+        case 1:
+            screen = 3;
+            break;
+        case 2:
+            screen = 0;
+            break;
+        <span class="weakness">break;</span>
+    }
+    drawScreen();
+}
+...
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here the last break statement essentially has no purpose and does not effect the behaviour of the switch statement, so it is safe to remove it. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+
+if (ok.wasReleased()) {       
+    switch (menu_current) {          
+        case 0: 
+            screen = 2;
+            break;
+        case 1:
+            screen = 3;
+            break;
+        case 2:
+            screen = 0;
+            break;
+    }
+    drawScreen();
+}
+...
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+             <div class="version">
+                <h3>Ex 2 - CWE 758: "Reliance on Undefined, Unspecified, or Implementation-Defined Behavior" from <a href="https://stackoverflow.com/questions/29460115/bitwise-shift-unsigned-long-on-arduino/29460225#29460225">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+
+int a = 1, b = 40;
+
+int main() {
+    <span class="weakness">printf("1 << 40 = %d\n", 1 << 40);
+    printf("1 << 40 = %d\n", 1 << 40);
+    printf("1 << 40 = %d\n", 1 << 40);</span>
+    printf("%d << %d = %d\n", a, b, a << b);
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here the value 1, which is an int and 32 bits, is being shifted by 40 bits, which will lead to undefined behaviour. To fix this, convert 1 to a larger data type before shifting. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#include &lt;stdio.h&gt;
+
+int a = 1, b = 40;
+
+int main() {
+    <span class="correction">printf("1 << 40 = %llu\n", (unsigned long long)1 << 40);
+    printf("1 << 40 = %llu\n", (unsigned long long)1 << 40);
+    printf("1 << 40 = %llu\n", (unsigned long long)1 << 40);</span>
+    printf("%d << %d = %d\n", a, b, a << b);
+}                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Calculation Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 369: "Divide By Zero" from <a href="https://arduino.stackexchange.com/questions/58301/how-are-errors-not-related-to-syntax-managed-in-arduino-and-in-the-avr-archite/58314#58314">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+void setup() {
+Serial.begin(9600);
+}
+
+void loop(){
+    int x = 0;
+    int p = 50;
+    int result;
+    <span class="weakness">result = p/x;</span>
+    Serial.println(result);
+    delay(5000);
+}                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here p is being divided by x which is initialized to zero, thus resulting in a divide by zero error. To fix this either change the value of x, or handle the divide by zero case as shown below. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+void setup() {
+Serial.begin(9600);
+}
+
+void loop(){
+    int x = 0;
+    int p = 50;
+    int result;
+    <span class="correction">if (x != 0) {
+        result = p / x;
+    } else {
+        Serial.println("Error: Division by zero.");
+    }</span>
+
+    Serial.println(result);
+    delay(5000);
+}  
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version">
+                <h3>Ex 2 - CWE 682:"Incorrect Calculation" from <a href="https://arduino.stackexchange.com/questions/46008/what-is-a-faster-alternative-to-parseint/46017#46017">Arduino</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#define CHANNELS 11
+
+void setup()
+{
+  Serial.begin(9600);
+
+  while(!Serial);
+}
+
+void loop()
+{
+  char packet[CHANNELS + 1];
+  int values[CHANNELS];
+
+  // Read 12 bytes (11 bytes of data + 1 byte delimiter)
+  int nBytes = Serial.readBytes(packet, <span class="weakness">sizeof(CHANNELS + 1))</span>;
+
+  if(nBytes == CHANNELS + 1) {
+    // Convert bytes to ints;
+    for(int i=0; i&lt;CHANNELS; i++) {
+      values[i] = packet[i];
+    }
+  } else {
+     // Error. 
+     }
+
+  // Here you display your graph.
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">The issue in this code is that a calculation is being done inside of the sizeof function, which does not perform operations at runtime. So, calculations should be done outside of it. In the fixed code, packet is passed into sizeof instead since the packet char array has CHANNELS+1 elements, so the sizeof method should correctly return the size of that. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+#define CHANNELS 11
+
+void setup()
+{
+  Serial.begin(9600);
+
+  while(!Serial);
+}
+
+void loop()
+{
+  char packet[CHANNELS + 1];
+  int values[CHANNELS];
+
+  // Read 12 bytes (11 bytes of data + 1 byte delimiter)
+  int nBytes = Serial.readBytes(packet, <span class="correction">sizeof(packet))</span>;
+
+  if(nBytes == CHANNELS + 1) {
+    // Convert bytes to ints;
+    for(int i=0; i&lt;CHANNELS; i++) {
+      values[i] = packet[i];
+    }
+  } else {
+     // Error. 
+     }
+
+  // Here you display your graph.
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Resource Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 664: "Improper Control of a Resource Through its Lifetime" from <a href="https://arduino.stackexchange.com/questions/176/how-do-i-print-multiple-variables-in-a-string/201#201">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int ardprintf(char *str, ...)
+{
+  int i, count=0, j=0, flag=0;
+  char temp[ARDBUFFER+1];
+  for(i=0; str[i]!='\0';i++)  if(str[i]=='%')  count++;
+
+  <span class="weakness">va_list argv;
+  va_start(argv, count);</span>
+  for(i=0,j=0; str[i]!='\0';i++)
+  {
+    if(str[i]=='%')
+    {
+      temp[j] = '\0';
+      Serial.print(temp);
+      j=0;
+      temp[0] = '\0';
+
+      switch(str[++i])
+      {
+        case 'd': Serial.print(va_arg(argv, int));
+                  break;
+        case 'l': Serial.print(va_arg(argv, long));
+                  break;
+        case 'f': Serial.print(va_arg(argv, double));
+                  break;
+        case 'c': Serial.print((char)va_arg(argv, int));
+                  break;
+        case 's': Serial.print(va_arg(argv, char *));
+                  break;
+        default:  ;
+      };
+    }
+    else 
+    {
+      temp[j] = str[i];
+      j = (j+1)%ARDBUFFER;
+      if(j==0) 
+      {
+        temp[ARDBUFFER] = '\0';
+        Serial.print(temp);
+        temp[0]='\0';
+      }
+    }
+  };
+  Serial.println();
+  return count + 1;
+}
+#undef ARDBUFFER
+#endif
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">Here, to ensure proper memory management and resource use, va_end should be called after using the variable arguments. </p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int ardprintf(char *str, ...)
+{
+  int i, count=0, j=0, flag=0;
+  char temp[ARDBUFFER+1];
+  for(i=0; str[i]!='\0';i++)  if(str[i]=='%')  count++;
+
+  va_list argv;
+  va_start(argv, count);
+  for(i=0,j=0; str[i]!='\0';i++)
+  {
+    if(str[i]=='%')
+    {
+      temp[j] = '\0';
+      Serial.print(temp);
+      j=0;
+      temp[0] = '\0';
+
+      switch(str[++i])
+      {
+        case 'd': Serial.print(va_arg(argv, int));
+                  break;
+        case 'l': Serial.print(va_arg(argv, long));
+                  break;
+        case 'f': Serial.print(va_arg(argv, double));
+                  break;
+        case 'c': Serial.print((char)va_arg(argv, int));
+                  break;
+        case 's': Serial.print(va_arg(argv, char *));
+                  break;
+        default:  ;
+      };
+    }
+    else 
+    {
+      temp[j] = str[i];
+      j = (j+1)%ARDBUFFER;
+      if(j==0) 
+      {
+        temp[ARDBUFFER] = '\0';
+        Serial.print(temp);
+        temp[0]='\0';
+      }
+    }
+  };
+  Serial.println();
+  return count + 1;
+}
+<span class="correction">va_end(argv)</span>
+#undef ARDBUFFER
+#endif
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="version">
+                <h3>Ex 2 - CWE 672: "Operation on a Resource after Expiration or Release" from <a href="https://arduino.stackexchange.com/questions/80561/arduino-freezing-frequently/80658#80658">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">                     
+int freeRam()
+{
+    extern int __heap_start, *__brkval;
+    int v;
+    return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
+}
+
+uint8_t * stack()
+{
+  uint8_t * ptr;
+  ptr = (uint8_t *)malloc(4);
+  free(ptr);
+  return ((uint8_t *)(SP));
+}
+
+uint8_t * heap()
+{
+       uint8_t * ptr;
+       ptr = (uint8_t *)malloc(4);
+       <span class="weakness">free(ptr);</span>
+       return(ptr);
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">This code attempts to return a pointer after it has been deallocated, and accessing that pointer would result in unexpected behaviour. To address this, the free(ptr) statement should be removed altogether from the function and the returned pointer should be deallocated outside after it has been used.</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+int freeRam()
+{
+    extern int __heap_start, *__brkval;
+    int v;
+    return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
+}
+
+uint8_t * stack()
+{
+  uint8_t * ptr;
+  ptr = (uint8_t *)malloc(4);
+  free(ptr);
+  return ((uint8_t *)(SP));
+}
+
+uint8_t * heap()
+{
+       uint8_t * ptr;
+       ptr = (uint8_t *)malloc(4);
+       <span class="correction">return(ptr);</span>
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Conversion Code Weaknesses</h2>
+            <div class="version">
+                <h3>Ex 1 - CWE 704: "Incorrect Type Conversion or Cast" from <a href="https://stackoverflow.com/questions/24420246/c-function-to-convert-float-to-byte-array/24420675#24420675">Stack Overflow</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                    <code class="cpp">
+byte* floatToByteArray(float f) {
+    byte* ret = malloc(4 * sizeof(byte));
+    <span class = "weakness">unsigned int asInt = *((int*)&f);</span>
+
+    int i;
+    for (i = 0; i < 4; i++) {
+        ret[i] = (asInt >> 8 * i) & 0xFF;
+    }
+
+    return ret;
+}
+
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">The highlighted line assumes that representation of int in memory is compatible with float, 
+                        which is not guaranteed and lead to portability issues. The fix below uses memcpy which ensures proper memory access and is more portable as
+                         it is a standard C library. 
+</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+byte* floatToByteArray(float f) {
+    byte* ret = malloc(4 * sizeof(byte));
+    <span class="correction">unsigned int asInt;
+    memcpy(&asInt, &f, sizeof(float));</span>
+
+    int i;
+    for (i = 0; i < 4; i++) {
+        ret[i] = (asInt >> 8 * i) & 0xFF;
+    }
+
+    return ret;
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version">
+                <h3>Ex 2 - CWE 195: "Signed to Unsigned Conversion Error" from <a href="https://arduino.stackexchange.com/questions/57558/using-2-piezo-buzzers-to-emit-the-same-tone-with-phase-difference/57562#57562">Arduino Stack Exchange</a></h3>
+                <div class="snippet">
+                    <div class="section">
+                        <h4>Vulnerable Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+const uint8_t PIN_A = 8;
+const uint8_t PIN_B = 9;
+const uint32_t HALF_PERIOD = 5000;  // 5000 us
+const float PHASE_SHIFT = 0.25;     // 1/4 period
+
+uint8_t state_A = LOW;
+uint8_t state_B = LOW;
+
+uint32_t last_A_toggle = 0;
+<span class="weakness">uint32_t last_B_toggle = - 2 * HALF_PERIOD * PHASE_SHIFT;</span>
+
+void setup() {
+    pinMode(PIN_A, OUTPUT);
+    pinMode(PIN_B, OUTPUT);
+}
+
+void loop() {
+    uint32_t now = micros();
+    if (now - last_A_toggle >= HALF_PERIOD) {
+        last_A_toggle += HALF_PERIOD;
+        state_A = !state_A;
+        digitalWrite(PIN_A, state_A);
+    }
+    if (now - last_B_toggle >= HALF_PERIOD) {
+        last_B_toggle += HALF_PERIOD;
+        state_B = !state_B;
+        digitalWrite(PIN_B, state_B);
+    }
+}
+                            </code>
+                        </pre>
+                    </div>
+                    <p class="explanation">	In this code, a potentially negative value is being converted to an unsigned integer. If the result of the expression is negative, it will be implicitly converted to an unsigned integer, which could lead to unexpected behavior.
+	To address this, either change the type to signed (int32_t) or handle the negative result case separately like shown below.
+</p>
+                    <div class="section">
+                        <h4>Fixed Code Snippet</h4>
+                        <pre>
+                            <code class="cpp">
+const uint8_t PIN_A = 8;
+const uint8_t PIN_B = 9;
+const uint32_t HALF_PERIOD = 5000;  // 5000 us
+const float PHASE_SHIFT = 0.25;     // 1/4 period
+
+uint8_t state_A = LOW;
+uint8_t state_B = LOW;
+
+uint32_t last_A_toggle = 0;
+<span class="correction">int result = -2 * HALF_PERIOD * PHASE_SHIFT;
+if (result < 0) {
+    // Handle the case where the result is negative
+    last_B_toggle = DEFAULT_VALUE;
+} else {
+    last_B_toggle = (uint32_t)result; 
+}
+</span>
+
+void setup() {
+    pinMode(PIN_A, OUTPUT);
+    pinMode(PIN_B, OUTPUT);
+}
+
+void loop() {
+    uint32_t now = micros();
+    if (now - last_A_toggle >= HALF_PERIOD) {
+        last_A_toggle += HALF_PERIOD;
+        state_A = !state_A;
+        digitalWrite(PIN_A, state_A);
+    }
+    if (now - last_B_toggle >= HALF_PERIOD) {
+        last_B_toggle += HALF_PERIOD;
+        state_B = !state_B;
+        digitalWrite(PIN_B, state_B);
+    }
+}
+
+int result = -2 * HALF_PERIOD * PHASE_SHIFT;
+if (result < 0) {
+    // Handle the case where the result is negative
+    // For example, set last_B_toggle to a specific value
+    last_B_toggle = DEFAULT_VALUE;
+} else {
+    last_B_toggle = (uint32_t)result; // Safe to assign as result is non-negative
+}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
+
 </html>
